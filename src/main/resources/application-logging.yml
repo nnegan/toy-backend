@@ -1,0 +1,26 @@
+# -----------------------------------------
+# 데이터베이스 (Mysql, Redis)
+#------------------------------------------
+spring:
+  config:
+    activate:
+      on-profile: local-glog-logging
+
+logging:
+  level:
+    root: INFO
+    feign: DEBUG
+    com.toy: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+---
+spring:
+  config:
+    activate:
+      on-profile: develop-glog-logging
+
+logging:
+  level:
+    root: INFO
+    feign: DEBUG
+    com.toy: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE

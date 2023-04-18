@@ -1,0 +1,25 @@
+server:
+  port: 18081
+  servlet:
+    context-path: /
+
+management:
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+  endpoint:
+    health:
+      show-details: always
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: swagger-ui-custom.html
+    operations-sorter: alpha
+    tags-sorter: alpha
+    groups-order: asc
+

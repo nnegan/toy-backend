@@ -1,0 +1,21 @@
+spring:
+  config:
+    import:
+      - classpath:application-common.yml
+      - classpath:application-db.yml
+      - classpath:application-logging.yml
+      - classpath:application-redis.yml
+  profiles:
+    include:
+      - common
+    group:
+      local:
+        - local-glog-mysql-docker
+        - local-glog-logging
+        - local-glog-redis-docker
+        - local-glog-s3
+      develop:
+        - develop-glog-mysql
+        - develop-glog-logging
+        - develop-glog-redis
+        - develop-glog-s3

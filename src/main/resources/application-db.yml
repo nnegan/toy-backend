@@ -1,0 +1,32 @@
+# -----------------------------------------
+# 데이터베이스 (Mysql, Redis)
+#------------------------------------------
+spring:
+  config:
+    activate:
+      on-profile: local-glog-mysql-docker
+  datasource:
+    write:
+      hikari:
+        jdbc-url: jdbc:mysql://localhost:3306/toy_dev?autoReconnect=True&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+        username: toy_dev
+        password: 1234
+        driver-class-name: com.mysql.cj.jdbc.Driver
+
+    read-only:
+      hikari:
+        jdbc-url: jdbc:mysql://localhost:3306/toy_dev?autoReconnect=True&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+        username: toy_dev
+        password: 1234
+        driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    open-in-view: false
+    show-sql: true
+    database: mysql
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
