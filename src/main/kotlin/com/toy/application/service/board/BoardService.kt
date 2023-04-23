@@ -133,7 +133,7 @@ class BoardService(
             }
         }
 
-    //return boardPort.modifyBoard(apiId, board)
+    //return boardPort.modifyBoard(boardId, board)
     }
 
     override fun deleteBoard(boardId: String) {

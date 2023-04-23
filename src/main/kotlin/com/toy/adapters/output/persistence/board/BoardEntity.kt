@@ -1,5 +1,6 @@
 package com.toy.adapters.output.persistence.board
 
+import com.toy.adapters.output.persistence.BaseEntity
 import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedBy
 import org.springframework.data.annotation.CreatedDate
@@ -19,7 +20,7 @@ class BoardEntity (
     val boardId: String,
 
     @OneToMany(mappedBy = "board", fetch = FetchType.EAGER) //mappedBy = "BoardCommentEntity.boardId",
-    val comment: MutableList<BoardCommentEntity> = mutableListOf(),
+    val comments: MutableList<BoardCommentEntity> = mutableListOf(),
 
     val title: String,
 
@@ -27,7 +28,7 @@ class BoardEntity (
 
     val useYn: String,
 
-    @CreatedBy
+/*    @CreatedBy
     @Column(updatable = false)
     val createdBy: String,
 
@@ -39,9 +40,6 @@ class BoardEntity (
     val modifiedBy: String,
 
     @LastModifiedDate
-    val modifiedTime: LocalDateTime? = LocalDateTime.now(),
+    val modifiedTime: LocalDateTime? = LocalDateTime.now(),*/
 
-    )
-{
-
-}
+    ): BaseEntity()

@@ -1,5 +1,6 @@
 package com.toy.adapters.output.persistence.board
 
+import com.toy.adapters.output.persistence.BaseEntity
 import jakarta.persistence.*
 
 @Entity
@@ -16,4 +17,4 @@ class BoardCommentEntity (
 
     val body: String,
 
-)
+): BaseEntity()

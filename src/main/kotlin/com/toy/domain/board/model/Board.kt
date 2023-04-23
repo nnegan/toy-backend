@@ -8,6 +8,9 @@ data class Board(
 
     val title: String,
     val body: String,
+
+    val comments: List<BoardComment>? = emptyList(),
+
     val useYn: String,
 
     // 등록, 수정 정보

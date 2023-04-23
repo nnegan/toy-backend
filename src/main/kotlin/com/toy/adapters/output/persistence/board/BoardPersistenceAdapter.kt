@@ -1,6 +1,5 @@
 package com.toy.adapters.output.persistence.board
 
-import com.mysql.cj.log.LogFactory
 import com.toy.application.port.output.repository.board.BoardPort
 import com.toy.domain.board.model.Board
 import com.toy.domain.board.model.BoardComment
