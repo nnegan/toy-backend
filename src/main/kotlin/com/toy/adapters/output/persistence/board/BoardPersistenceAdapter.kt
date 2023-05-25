@@ -29,6 +29,7 @@ class BoardPersistenceAdapter (
 
     override fun createBoard(board: Board): String {
         log.debug("board {}", board.toString())
+        log.debug("boardMapper.mapToEntity(board) : {}", boardMapper.mapToEntity(board).toString())
         return boardRepository.save(boardMapper.mapToEntity(board)).boardId
     }
 

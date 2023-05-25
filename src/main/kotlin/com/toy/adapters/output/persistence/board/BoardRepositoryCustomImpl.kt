@@ -35,9 +35,9 @@ class BoardRepositoryCustomImpl (
                     boardEntity.body,
                     boardEntity.useYn,
                     boardEntity.createdBy,
-                    boardEntity.createdTime,
+                    boardEntity.createdAt,
                     boardEntity.modifiedBy,
-                    boardEntity.modifiedTime
+                    boardEntity.modifiedAt
                 )
             )
             .from(boardEntity)
@@ -67,14 +67,14 @@ class BoardRepositoryCustomImpl (
 
         if ( !StringUtils.isNullOrEmpty(searchBoard.toCreatedTime))
             if ( !StringUtils.isNullOrEmpty(searchBoard.endCreatedTime))
-                boardEntity.createdTime.between(
+                boardEntity.createdAt.between(
                     LocalDateTime.parse(searchBoard.toCreatedTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
                     LocalDateTime.parse(searchBoard.endCreatedTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
                 )
 
         if ( !StringUtils.isNullOrEmpty(searchBoard.toModifiedTime))
             if ( !StringUtils.isNullOrEmpty(searchBoard.endModifiedTime))
-                boardEntity.modifiedTime.between(
+                boardEntity.modifiedAt.between(
                     LocalDateTime.parse(searchBoard.toModifiedTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
                     LocalDateTime.parse(searchBoard.endModifiedTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
                 )

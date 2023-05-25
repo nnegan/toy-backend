@@ -53,7 +53,6 @@ dependencies {
 
     // 분산락 구현을 위한 Redisson
     implementation("org.redisson:redisson-spring-boot-starter:3.20.0")
-//    implementation("org.redisson:redisson-spring-boot-starter:3.16.4")
 
     // runtimeOnly("com.h2database:h2")
 
@@ -78,15 +77,16 @@ dependencies {
 /*    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")*/
 
-    implementation("org.springframework.session:spring-session-data-redis")
+    //implementation("org.springframework.session:spring-session-data-redis")
 
     implementation("org.mapstruct:mapstruct:1.5.2.Final")
     kapt("org.mapstruct:mapstruct-processor:1.5.2.Final")
     kaptTest("org.mapstruct:mapstruct-processor:1.5.2.Final")
 
-
-
     // Spring Security
+    //implementation("org.springframework.boot:spring-boot-starter-security")
+
+
 /*    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
     runtimeOnly("com.nimbusds:oauth2-oidc-sdk:10.7")*/
@@ -103,6 +103,9 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
     implementation ("mysql:mysql-connector-java")
 
+
+    // jwt, security
+    //implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
 
 
 //    implementation("io.jsonwebtoken:jjwt-api:0.11.2")

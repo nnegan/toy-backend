@@ -11,7 +11,7 @@ import java.time.LocalDateTime
 class BoardDtoMapper{
 
     fun domainToResponseDto(board: Board) = with(board){
-        BoardResponseDto(boardId!!, title, body, useYn, createdBy!!, createdTime!!, modifiedBy!!, modifiedTime!!)
+        BoardResponseDto(boardId!!, title, body, useYn, createdBy!!, createdAt!!, modifiedBy!!, modifiedAt!!)
     }
 
 

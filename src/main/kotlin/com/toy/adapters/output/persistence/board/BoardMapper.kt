@@ -41,9 +41,9 @@ class BoardMapper{
             body = body,
             useYn = useYn,
             createdBy = createdBy,
-            createdTime = createdTime,
+            createdAt = createdAt,
             modifiedBy = modifiedBy,
-            modifiedTime = modifiedTime
+            modifiedAt = modifiedAt
         )
     }
 
@@ -54,9 +54,9 @@ class BoardMapper{
             body = body,
             useYn = useYn,
             createdBy = createdBy,
-            createdTime = createdTime,
+            createdAt = createdAt,
             modifiedBy = modifiedBy,
-            modifiedTime = modifiedTime
+            modifiedAt = modifiedAt
         )
     }
 

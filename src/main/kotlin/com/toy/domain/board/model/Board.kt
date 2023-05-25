@@ -15,7 +15,7 @@ data class Board(
 
     // 등록, 수정 정보
     val createdBy: String? = null,
-    val createdTime: LocalDateTime? = null,
+    val createdAt: LocalDateTime? = null,
     val modifiedBy: String? = null,
-    val modifiedTime: LocalDateTime? = null,
+    val modifiedAt: LocalDateTime? = null,
 )

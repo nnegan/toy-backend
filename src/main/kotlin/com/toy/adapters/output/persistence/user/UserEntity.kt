@@ -1,6 +1,5 @@
-package com.toy.adapters.output.persistence.board
+package com.toy.adapters.output.persistence.user
 
-import com.toy.adapters.output.persistence.BaseEntity
 import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedBy
 import org.springframework.data.annotation.CreatedDate
@@ -8,19 +7,23 @@ import org.springframework.data.annotation.LastModifiedBy
 import org.springframework.data.annotation.LastModifiedDate
 import java.time.LocalDateTime
 
+
 @Entity
-@Table(name = "board_comment")
-class BoardCommentEntity (
+@Table(name = "user_info")
+class UserEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    val userNo: Long = 0,
 
-    @ManyToOne( fetch = FetchType.LAZY)
-    @JoinColumn(name = "board_id")
-    val board: BoardEntity,
+    @Column
+    val userId: String = "",
 
-    val body: String,
+    @Column
+    val userPassword: String = "",
+
+    @Column
+    val userName: String = "",
 
     @CreatedBy
     @Column(updatable = false)
@@ -36,4 +39,5 @@ class BoardCommentEntity (
     @LastModifiedDate
     val modifiedAt: LocalDateTime? = LocalDateTime.now(),
 
-    )//: BaseEntity()
+) {
+}

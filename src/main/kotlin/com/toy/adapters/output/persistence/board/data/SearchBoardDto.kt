@@ -9,8 +9,8 @@ data class SearchBoardDto @QueryProjection constructor(
     val body: String,
     val useYn: String,
     val createdBy: String,
-    val createdTime: LocalDateTime,
+    val createdAt: LocalDateTime,
     val modifiedBy: String,
-    val modifiedTime: LocalDateTime,
+    val modifiedAt: LocalDateTime,
 ){
 }

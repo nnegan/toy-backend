@@ -17,6 +17,7 @@ import org.redisson.api.RLock
 import org.redisson.api.RedissonClient
 import org.springframework.transaction.PlatformTransactionManager
 import org.springframework.transaction.support.DefaultTransactionDefinition
+import java.time.Duration
 import java.util.concurrent.TimeUnit
 
 @Service
@@ -163,4 +164,7 @@ class BoardService(
     override fun createComment(boardComment: BoardComment) {
         boardPort.createComment(boardComment)
     }
+
+
+
 }

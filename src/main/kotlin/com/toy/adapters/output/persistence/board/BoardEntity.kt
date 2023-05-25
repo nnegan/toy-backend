@@ -28,18 +28,18 @@ class BoardEntity (
 
     val useYn: String,
 
-/*    @CreatedBy
+    @CreatedBy
     @Column(updatable = false)
-    val createdBy: String,
+    val createdBy: String? = "1",
 
     @CreatedDate
     @Column(updatable = false)
-    val createdTime: LocalDateTime? = LocalDateTime.now(),
+    val createdAt: LocalDateTime? = LocalDateTime.now(),
 
     @LastModifiedBy
-    val modifiedBy: String,
+    val modifiedBy: String? = "1",
 
     @LastModifiedDate
-    val modifiedTime: LocalDateTime? = LocalDateTime.now(),*/
+    val modifiedAt: LocalDateTime? = LocalDateTime.now(),
 
-    ): BaseEntity()
+    )//: BaseEntity()

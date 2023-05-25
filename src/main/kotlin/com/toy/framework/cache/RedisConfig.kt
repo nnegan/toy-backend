@@ -10,8 +10,12 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration
 import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory
 import org.springframework.data.redis.core.RedisTemplate
+import org.springframework.data.redis.listener.RedisMessageListenerContainer
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer
 import org.springframework.data.redis.serializer.RedisSerializer
+import org.springframework.data.redis.serializer.StringRedisSerializer
 import java.time.Duration
+
 
 @Configuration
 class RedisConfig
@@ -30,31 +34,6 @@ class RedisConfig
     private lateinit var useCluster: String
 
     private val log = LoggerFactory.getLogger(javaClass)
-
-/*
-    @Bean
-    fun redisConnectionFactory(): RedisConnectionFactory = LettuceConnectionFactory(host, port)
-
-    @Bean
-    fun cacheManager(): CacheManager {
-        val objectMapper = ObjectMapper()
-            .registerModule(JavaTimeModule())
-            .activateDefaultTyping(
-                BasicPolymorphicTypeValidator.builder()
-                .allowIfBaseType(Any::class.java).build(), ObjectMapper.DefaultTyping.EVERYTHING)
-
-        val redisCacheConfiguration: RedisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
-            .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(StringRedisSerializer()))
-            .serializeValuesWith(
-                RedisSerializationContext.SerializationPair
-                .fromSerializer(GenericJackson2JsonRedisSerializer(objectMapper)))
-            .entryTtl(Duration.ofMinutes(3L))
-
-        return RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory(redisConnectionFactory())
-            .cacheDefaults(redisCacheConfiguration).build()
-    }*/
-
-
 
     @Bean
     fun redisObjectTemplateFactory(): RedisConnectionFactory {
@@ -83,6 +62,47 @@ class RedisConfig
         return redisTemplate
     }
 
+
+
+    @Bean
+    fun RedisMessageListener(connectionFactory: RedisConnectionFactory): RedisMessageListenerContainer {
+        val container = RedisMessageListenerContainer()
+        container.setConnectionFactory(connectionFactory)
+        return container
+    }
+
+    @Bean
+    fun redisTemplateForObject(connectionFactory: RedisConnectionFactory): RedisTemplate<String, Any> {
+        val redisTemplate = RedisTemplate<String, Any>()
+        redisTemplate.setConnectionFactory(connectionFactory)
+        redisTemplate.keySerializer = StringRedisSerializer()
+        redisTemplate.valueSerializer = Jackson2JsonRedisSerializer(String::class.java)
+        return redisTemplate
+    }
+
+
+/*
+    @Bean
+    fun redisConnectionFactory(): RedisConnectionFactory = LettuceConnectionFactory(host, port)
+
+    @Bean
+    fun cacheManager(): CacheManager {
+        val objectMapper = ObjectMapper()
+            .registerModule(JavaTimeModule())
+            .activateDefaultTyping(
+                BasicPolymorphicTypeValidator.builder()
+                .allowIfBaseType(Any::class.java).build(), ObjectMapper.DefaultTyping.EVERYTHING)
+
+        val redisCacheConfiguration: RedisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
+            .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(StringRedisSerializer()))
+            .serializeValuesWith(
+                RedisSerializationContext.SerializationPair
+                .fromSerializer(GenericJackson2JsonRedisSerializer(objectMapper)))
+            .entryTtl(Duration.ofMinutes(3L))
+
+        return RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory(redisConnectionFactory())
+            .cacheDefaults(redisCacheConfiguration).build()
+    }*/
 
 /*
     @Bean(name = ["redisObjectTemplate"])

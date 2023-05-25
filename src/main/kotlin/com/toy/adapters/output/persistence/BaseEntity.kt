@@ -5,6 +5,7 @@ import jakarta.persistence.EntityListeners
 import jakarta.persistence.MappedSuperclass
 import org.springframework.data.annotation.CreatedBy
 import org.springframework.data.annotation.CreatedDate
+
 import org.springframework.data.annotation.LastModifiedBy
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
@@ -15,16 +16,16 @@ import java.time.LocalDateTime
 abstract class BaseEntity (
 
     @CreatedBy
-    @Column(updatable = false)
-    val createdBy: String? = null,
+    @Column( name="created_by", updatable = false)
+    val createdBy: String = "1",
 
     @CreatedDate
-    @Column(updatable = false)
-    val createdTime: LocalDateTime? = LocalDateTime.now(),
+    @Column(name="created_at", updatable = false)
+    val createdAt: LocalDateTime,
 
     @LastModifiedBy
-    val modifiedBy: String? = null,
+    val modifiedBy: String = "1",
 
     @LastModifiedDate
-    val modifiedTime: LocalDateTime? = LocalDateTime.now(),
+    val modifiedAt: LocalDateTime,
 )
