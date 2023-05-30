@@ -6,12 +6,14 @@ import com.toy.adapters.input.web.util.response.ResponseUtils
 import com.toy.application.port.input.board.BoardUseCase
 import com.toy.domain.board.model.Board
 import com.toy.domain.board.model.BoardComment
+import com.toy.framework.security.toUser
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.slf4j.LoggerFactory
 import org.springframework.data.domain.Page
 import org.springframework.http.ResponseEntity
+import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
@@ -30,8 +32,9 @@ class BoardController (
      */
     @Operation( summary = "[API 조회] 리스트, 조회조건, 페이징 처리", description = "등록된 API 목록 전체를 조회한다.")
     @PostMapping("/search/pagelist")
-    fun searchPageBoardList(@RequestBody searchPageBoardRequestDto: SearchPageBoardRequestDto): ResponseEntity<Page<Board>>{
+    fun searchPageBoardList(authentication: Authentication, @RequestBody searchPageBoardRequestDto: SearchPageBoardRequestDto): ResponseEntity<Page<Board>>{
         return try{
+            val authUser = authentication.toUser()
             ResponseUtils.searchResults(boardUseCase.searchPageBoardList(boardDtoMapper.searchPageRequestDtoToDomain(searchPageBoardRequestDto)))
         }catch(e: Exception){
             log.error("Exception : {}", e)

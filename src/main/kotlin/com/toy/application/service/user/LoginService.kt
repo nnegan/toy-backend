@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service
 @Service
 class LoginService (
     private val userPort: UserPort,
+    private val tokenService: TokenService,
+
 ) : LoginUseCase {
 
     private val log = LoggerFactory.getLogger(javaClass)
@@ -19,6 +21,6 @@ class LoginService (
 
         log.debug("result : {}", result.toString())
 
-        return "";
+        return tokenService.createToken(user)
     }
 }

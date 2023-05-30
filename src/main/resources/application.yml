@@ -19,3 +19,6 @@ spring:
         - develop-glog-logging
         - develop-glog-redis
         - develop-glog-s3
+        -
+security:
+  key: somerandomkeywhichislongenoughtoalignwiththejwtspecification

@@ -84,11 +84,9 @@ dependencies {
     kaptTest("org.mapstruct:mapstruct-processor:1.5.2.Final")
 
     // Spring Security
-    //implementation("org.springframework.boot:spring-boot-starter-security")
-
-
-/*    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+/*    implementation("org.springframework.boot:spring-boot-starter-security")
+
     runtimeOnly("com.nimbusds:oauth2-oidc-sdk:10.7")*/
 
     // 코루틴
